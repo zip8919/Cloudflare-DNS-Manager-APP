@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Cloudflare DNS Manager</string>
+    <string name="search_domains">搜索域名…</string>
+    <string name="no_domains_found">未找到域名</string>
+    <string name="no_dns_records_found">未找到 DNS 记录</string>
+    <string name="add_dns_record">添加 DNS 记录</string>
+    <string name="save_token">保存 API 令牌</string>
+    <string name="api_token">API 令牌</string>
+    <string name="get_token_instructions">从以下路径获取你的API令牌：Cloudflare 控制台 → 我的资料 → API令牌</string>
+</resources>

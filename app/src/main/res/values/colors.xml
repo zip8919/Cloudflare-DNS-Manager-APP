@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Cloudflare主题配色 -->
+    <color name="cloudflare_orange">#FF9C3B19</color>
+    <color name="cloudflare_orange_dark">#FF7A2E14</color>
+    <color name="cloudflare_blue">#FF2C7BB9</color>
+    <color name="cloudflare_blue_dark">#FF1E5A8C</color>
+    <color name="cloudflare_light_blue">#FF4A90E2</color>
+    <color name="cloudflare_gray">#FF6B7280</color>
+    <color name="cloudflare_light_gray">#FFF3F4F6</color>
+    
+    <!-- 保持原有颜色名称但使用Cloudflare配色 -->
+    <color name="purple_200">#FF4A90E2</color>
+    <color name="purple_500">#FFF6821F</color>
+    <color name="purple_700">#FFFBAD41</color>
+    <color name="teal_200">#FF4A90E2</color>
+    <color name="teal_700">#FF2C7BB9</color>
+    
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    
+    <!-- Record type background colors -->
+    <color name="record_type_a">#FF4285F4</color>
+    <color name="record_type_aaaa">#FF34A853</color>
+    <color name="record_type_cname">#FFFBBC05</color>
+    <color name="record_type_mx">#FFEA4335</color>
+    <color name="record_type_txt">#FF8E44AD</color>
+    
+    <!-- Status colors -->
+    <color name="status_active">#FF4CAF50</color>
+    <color name="status_pending">#FFFF9800</color>
+    <color name="status_inactive">#FFF44336</color>
+</resources>
