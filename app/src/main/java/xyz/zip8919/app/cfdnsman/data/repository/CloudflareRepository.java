@@ -6,6 +6,8 @@ import xyz.zip8919.app.cfdnsman.data.api.ApiClient;
 import xyz.zip8919.app.cfdnsman.data.api.CloudflareApiService;
 import xyz.zip8919.app.cfdnsman.data.local.PreferencesManager;
 import xyz.zip8919.app.cfdnsman.data.model.ApiResponse;
+import xyz.zip8919.app.cfdnsman.data.model.BatchDNSRecordRequest;
+import xyz.zip8919.app.cfdnsman.data.model.BatchDNSRecordResult;
 import xyz.zip8919.app.cfdnsman.data.model.DNSRecord;
 import xyz.zip8919.app.cfdnsman.data.model.Zone;
 
@@ -56,6 +58,13 @@ public class CloudflareRepository {
     
     public Observable<ApiResponse<DNSRecord>> updateDNSRecord(String zoneId, String recordId, DNSRecord record) {
         return getApiService().updateDNSRecord(getAuthorizationHeader(), zoneId, recordId, record)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread());
+    }
+    
+    public Observable<ApiResponse<BatchDNSRecordResult>> replaceDNSRecord(String zoneId, String oldRecordId, DNSRecord newRecord) {
+        BatchDNSRecordRequest request = BatchDNSRecordRequest.createReplace(oldRecordId, newRecord);
+        return getApiService().batchDNSRecords(getAuthorizationHeader(), zoneId, request)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread());
     }

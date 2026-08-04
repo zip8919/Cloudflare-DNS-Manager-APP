@@ -37,7 +37,7 @@ public class DNSRecordDialog extends DialogFragment {
     private Button btnCancel;
     
     public interface OnDNSRecordSavedListener {
-        void onDNSRecordSaved(DNSRecord record, boolean isNew);
+        void onDNSRecordSaved(DNSRecord record, boolean isNew, String originalType);
     }
     
     public static DNSRecordDialog newInstance(DNSRecord record, String zoneName) {
@@ -183,7 +183,7 @@ public class DNSRecordDialog extends DialogFragment {
         }
         
         if (listener != null) {
-            listener.onDNSRecordSaved(newRecord, record == null);
+            listener.onDNSRecordSaved(newRecord, record == null, record == null ? null : record.getType());
         }
         
         dismiss();

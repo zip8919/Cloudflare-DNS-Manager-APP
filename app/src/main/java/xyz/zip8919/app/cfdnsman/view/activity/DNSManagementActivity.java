@@ -142,9 +142,13 @@ public class DNSManagementActivity extends AppCompatActivity implements
     }
     
     @Override
-    public void onDNSRecordSaved(DNSRecord record, boolean isNew) {
+    public void onDNSRecordSaved(DNSRecord record, boolean isNew, String originalType) {
         if (isNew) {
             viewModel.createDNSRecord(record);
+        } else if (originalType != null && !originalType.equals(record.getType())) {
+            // Cloudflare 自 2026-06-30 起弃用原地修改记录类型，
+            // 类型变更需先删除旧记录再创建新记录
+            viewModel.replaceDNSRecord(record.getId(), record);
         } else {
             viewModel.updateDNSRecord(record.getId(), record);
         }

@@ -98,6 +98,28 @@ public class DNSManagementViewModel extends ViewModel {
         ));
     }
     
+    public void replaceDNSRecord(String oldRecordId, DNSRecord record) {
+        if (currentZoneId == null) return;
+        
+        isLoading.setValue(true);
+        
+        disposables.add(repository.replaceDNSRecord(currentZoneId, oldRecordId, record).subscribe(
+            response -> {
+                isLoading.setValue(false);
+                if (response.isSuccess()) {
+                    successMessage.setValue("DNS 记录更新成功");
+                    loadDNSRecords(); // Refresh the list
+                } else {
+                    errorMessage.setValue("DNS 记录更新失败");
+                }
+            },
+            throwable -> {
+                isLoading.setValue(false);
+                errorMessage.setValue("网络错误: " + throwable.getMessage());
+            }
+        ));
+    }
+    
     public void deleteDNSRecord(String recordId) {
         if (currentZoneId == null) return;
         

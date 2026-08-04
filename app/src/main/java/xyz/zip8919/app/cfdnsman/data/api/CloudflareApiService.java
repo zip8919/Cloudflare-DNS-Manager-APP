@@ -1,6 +1,8 @@
 package xyz.zip8919.app.cfdnsman.data.api;
 
 import xyz.zip8919.app.cfdnsman.data.model.ApiResponse;
+import xyz.zip8919.app.cfdnsman.data.model.BatchDNSRecordRequest;
+import xyz.zip8919.app.cfdnsman.data.model.BatchDNSRecordResult;
 import xyz.zip8919.app.cfdnsman.data.model.DNSRecord;
 import xyz.zip8919.app.cfdnsman.data.model.Zone;
 
@@ -46,6 +48,13 @@ public interface CloudflareApiService {
         @Path("zone_id") String zoneId,
         @Path("record_id") String recordId,
         @Body DNSRecord record
+    );
+    
+    @POST("zones/{zone_id}/dns_records/batch")
+    Observable<ApiResponse<BatchDNSRecordResult>> batchDNSRecords(
+        @Header("Authorization") String authorization,
+        @Path("zone_id") String zoneId,
+        @Body BatchDNSRecordRequest request
     );
     
     @DELETE("zones/{zone_id}/dns_records/{record_id}")
